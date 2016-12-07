@@ -1,0 +1,15 @@
+{
+  "require": {
+    "slim/slim": "3.5.0",
+    "illuminate/database": "^5.0"
+  },
+  "autoload": {
+    "files": [
+    ],
+    "psr-4": {
+      "App\\": "app/",
+      "App\\Models\\": "app/models/",
+      "App\\Controllers\\": "app/controllers/"
+    }
+  }
+}
