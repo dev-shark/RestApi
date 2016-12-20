@@ -5,6 +5,7 @@ require './vendor/autoload.php';
 
 
 use App\Models\Disorders;
+use App\Models\Suggestion;
 use Slim\App;
 use Slim\Http\Request;
 use Slim\Http\Response;
@@ -41,10 +42,18 @@ $container['errorHandler'] = function () {
     };
 };
 
-$app->group('/', function () {
+$app->group('/disorders', function () {
     $this->get('', function (Request $request, Response $response, $args) {
         return $response->withJson([
-            'disorders' => Disorders::query()->get()
+            'disorders' => Disorders::query()->get(),
+        ]);
+    });
+});
+
+$app->group('/suggestion', function () {
+    $this->get('', function (Request $request, Response $response, $args) {
+        return $response->withJson([
+            'professional_suggestion' => Suggestion::query()->get()
         ]);
     });
 });
