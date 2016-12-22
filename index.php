@@ -58,6 +58,14 @@ $app->group('/suggestion', function () {
     });
 });
 
+$app->group('/activity', function () {
+    $this->get('', function (Request $request, Response $response, $args) {
+        return $response->withJson([
+            'activity_suggestion' => Activity::query()->get()
+        ]);
+    });
+});
+
 /*$app->get('/foo', function () {
     // Fetch all books
     $disorder = Disorders::all();
