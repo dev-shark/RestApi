@@ -6,6 +6,7 @@ require './vendor/autoload.php';
 
 use App\Models\Disorders;
 use App\Models\Suggestion;
+use App\Models\Activity;
 use Slim\App;
 use Slim\Http\Request;
 use Slim\Http\Response;
