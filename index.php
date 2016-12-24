@@ -63,11 +63,10 @@ $app->group('/suggestion', function () {
 
 $app->group('/activity', function () {
     $this->get('', function (Request $request, Response $response, $args) {
-
+        $disorderid = Activity::query()->select('disorder_id')->get();
         return $response->withJson([
-            $disorderid = Activity::query()->select('disorder_id')->get(),
             'activity_suggestion' => Activity::query()->get(),
-            'disorders' => Disorders::query()-> select('disordername')-> get()->where('id','==',$disorderid)
+            'disorders' => Disorders::query()-> select('disordername')-> get()
         ]);
     });
 });
