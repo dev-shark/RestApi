@@ -66,7 +66,7 @@ $app->group('/activity', function () {
         $disorderid = Activity::query()->select('disorder_id')->get();
         return $response->withJson([
             'activity_suggestion' => Activity::query()->get(),
-            'disorders' => Disorders::query()-> select('disordername')-> get()-> where('id' == $disorderid)
+            'disorders' => Disorders::query()-> select('disordername')-> get()->where('id','==',$disorderid)
         ]);
     });
 });
