@@ -53,16 +53,20 @@ $app->group('/disorders', function () {
 
 $app->group('/suggestion', function () {
     $this->get('', function (Request $request, Response $response, $args) {
+
         return $response->withJson([
-            'professional_suggestion' => Suggestion::query()->get()
+            'professional_suggestion' => Suggestion::query()->get(),
+
         ]);
     });
 });
 
 $app->group('/activity', function () {
     $this->get('', function (Request $request, Response $response, $args) {
+        $disorderid = Activity::query()->select('disorder_id')->get();
         return $response->withJson([
-            'activity_suggestion' => Activity::query()->get()
+            'activity_suggestion' => Activity::query()->get(),
+            'disorders' => Disorders::query()-> select('disordername')-> get()-> where('id' == $disorderid)
         ]);
     });
 });

@@ -23,4 +23,8 @@ class Activity extends Model{
     protected $table = "activity_suggestion";
 
     public $timestamp = false;
+
+    public function disorder(){
+        return $this->belongsTo('Disorders',[$this->disorder_id]);
+    }
 }
